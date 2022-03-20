@@ -26,6 +26,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Example from './components/Example';
+
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -66,6 +68,12 @@ const App: () => Node = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+        <Example />
+        <Example />
+        <Example />
+        <Example />
+        <Example />
+        <Example />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -74,7 +82,7 @@ const App: () => Node = () => {
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.
           </Section>
-          <Section title="See Your Changes">
+          <Section title="See Your Changes okok">
             <ReloadInstructions />
           </Section>
           <Section title="Debug">
