@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
+// import type {Node} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -17,6 +17,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+
 
 import {
   Colors,
@@ -28,7 +29,10 @@ import {
 
 import Example from './components/Example';
 
-const Section = ({children, title}): Node => {
+// import {View as VVV, TextField, Text as TTT, Button} from 'react-native-ui-lib';
+import { NativeBaseProvider, Box,Button } from "native-base";
+
+const Section = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -54,7 +58,7 @@ const Section = ({children, title}): Node => {
   );
 };
 
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -62,6 +66,7 @@ const App: () => Node = () => {
   };
 
   return (
+    <NativeBaseProvider>
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
@@ -95,6 +100,7 @@ const App: () => Node = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
+  </NativeBaseProvider>
   );
 };
 
