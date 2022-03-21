@@ -32,7 +32,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import EX from './src/components/EX'
+import EX from './src/components/EX';
 
 function HomeScreen({navigation}) {
   return (
@@ -41,7 +41,8 @@ function HomeScreen({navigation}) {
       <EX />
       <Button
         title="titleeee"
-        onPress={() => navigation.navigate('Deta')}></Button>
+        onPress={() => navigation.navigate('Deta')}
+      ></Button>
     </View>
   );
 }
@@ -78,7 +79,8 @@ const Deta = () => {
           _dark={{bg: 'blueGray.900'}}
           _light={{bg: 'blueGray.50'}}
           px={4}
-          flex={1}>
+          flex={1}
+        >
           <VStack space={5} alignItems="center">
             <NativeBaseIcon />
             <Heading size="lg">Welcome to NativeBase</Heading>
@@ -103,7 +105,8 @@ const Deta = () => {
               <G
                 id="Group_403"
                 data-name="Group 403"
-                transform="translate(14575 1918.542)">
+                transform="translate(14575 1918.542)"
+              >
                 <Path
                   id="Path_252"
                   data-name="Path 252"
