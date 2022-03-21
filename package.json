@@ -11,8 +11,10 @@
     "prettier": "prettier App.js src/* --write"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
+    "@react-navigation/stack": "^6.1.1",
     "moti": "^0.17.1",
     "native-base": "3.3.7",
     "react": "17.0.1",
