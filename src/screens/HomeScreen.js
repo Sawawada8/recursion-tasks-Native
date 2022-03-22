@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import EX from '../components/EX';
 
-export default ({navigation}) => {
+const HomeScreen = ({navigation}) => {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Home Screen</Text>
@@ -21,3 +21,5 @@ export default ({navigation}) => {
     </View>
   );
 };
+
+export default HomeScreen;

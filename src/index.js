@@ -14,12 +14,12 @@ import {
 } from 'native-base';
 import AppNavigation from './navigations/AppNavigation';
 
-const App = () => {
+const Src = () => {
   return (
     <NativeBaseProvider>
       <AppNavigation />
     </NativeBaseProvider>
-  )
-}
+  );
+};
 
-export default App
+export default Src;

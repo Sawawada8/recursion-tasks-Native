@@ -26,12 +26,6 @@ import {G, Path} from 'react-native-svg';
 
 import NativeBaseIcon from '../components/NativeBaseIcon';
 
-import {NavigationContainer} from '@react-navigation/native';
-
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
 // Color Switch Component
 function ToggleDarkMode() {
   const {colorMode, toggleColorMode} = useColorMode();
@@ -49,7 +43,8 @@ function ToggleDarkMode() {
     </HStack>
   );
 }
-export default ({navigation}) => {
+
+const DetaScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <ScrollView>
@@ -106,3 +101,5 @@ export default ({navigation}) => {
     </SafeAreaView>
   );
 };
+
+export default DetaScreen;

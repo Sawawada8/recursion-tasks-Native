@@ -7,11 +7,9 @@
  */
 
 import React from 'react';
-import App from './src/'
+import Src from './src/';
 
-const Endpoint = () => {
-  return (
-    <App />
-  );
+const App = () => {
+  return <Src />;
 };
-export default Endpoint;
+export default App;
