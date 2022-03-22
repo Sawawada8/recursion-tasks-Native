@@ -44,7 +44,7 @@ function ToggleDarkMode() {
   );
 }
 
-const DetaScreen = ({navigation}) => {
+const DetaScreen = ({navigation}: any) => {
   return (
     <SafeAreaView>
       <ScrollView>

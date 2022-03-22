@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import Src from './src/';
+import Src from './src';
 
 const App = () => {
   return <Src />;
