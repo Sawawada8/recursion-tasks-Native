@@ -13,6 +13,8 @@ import {
   Code,
 } from 'native-base';
 import AppNavigation from './navigations/AppNavigation';
+import 'react-native-gesture-handler';
+
 
 const Src = () => {
   return (

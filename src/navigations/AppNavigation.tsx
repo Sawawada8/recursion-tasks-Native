@@ -10,8 +10,10 @@ import {
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeStackNavigation from './stacks/HomeStackNavigation';
 import DetaStackNavigation from './stacks/DetaStackNavigation';
+
 
 const Tab = createBottomTabNavigator();
 
