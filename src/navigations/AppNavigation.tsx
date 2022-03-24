@@ -9,22 +9,15 @@ import {
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import HomeStackNavigation from './stacks/HomeStackNavigation';
-import DetaStackNavigation from './stacks/DetaStackNavigation';
+import DrawerNavigation from './DrawerNavigation';
 
 
-const Tab = createBottomTabNavigator();
 
 const AppNavigation = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="HomeStack" component={HomeStackNavigation} />
-        <Tab.Screen name="DetaStack" component={DetaStackNavigation} />
-      </Tab.Navigator>
-    </NavigationContainer>
+      <DrawerNavigation />
+    </NavigationContainer >
   );
 };
 
