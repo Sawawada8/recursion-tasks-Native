@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import TabNavigation from './TabNavigation';
+import DetailTabNavigation from './tabs/TabNavigation';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Screen from '../screens/HomeScreen'
+import HomeStackNavigator from './stacks/HomeStackNavigation'
 
 const Stack = createNativeStackNavigator();
 
@@ -21,8 +21,8 @@ const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='HOME' component={Screen} />
-        <Stack.Screen name='stack' component={TabNavigation} />
+        <Stack.Screen name='HOME' component={HomeStackNavigator} />
+        <Stack.Screen name='DETAIL' component={DetailTabNavigation} />
       </Stack.Navigator>
     </NavigationContainer >
   );
