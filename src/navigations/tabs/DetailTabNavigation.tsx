@@ -17,10 +17,11 @@ import CalenderScreen from '../../screens/Detail/CalenderScreen';
 
 const Tab = createBottomTabNavigator();
 
-const DetailTabNavgation = () => {
+const DetailTabNavgation = ({ route }: any) => {
+
   return (
     <Tab.Navigator>
-      <Tab.Screen name="SHOW" component={ShowScreen} />
+      <Tab.Screen name="SHOW" component={ShowScreen} initialParams={{ id: route.params.id }} />
       <Tab.Screen name="CALENDER" component={CalenderScreen} initialParams={{ id: 1, text: 'aaa' }} />
     </Tab.Navigator>
   )

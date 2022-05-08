@@ -17,8 +17,9 @@ const storage: Storage = new Storage({
 storage.save({
   key: 'tasks',
   data: {
-    test: 'teete',
-    tasks: [],
+    name: 'study',
+    meta: [{date: new Date(), state: 'DONE', comment: 'ok'}],
+    tasks: [{id: 1, date: new Date(), state: 'DONE', comment: 'ok'}],
   },
 });
 

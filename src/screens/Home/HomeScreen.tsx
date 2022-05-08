@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   // SafeAreaView,
   SafeAreaView,
@@ -100,7 +100,7 @@ interface Props {
 }
 const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
   const [text, setText] = useState<string>('')
-  const [data, setData] = useState(['a', 'aa', 'test'])
+  const [data, setData] = useState([])
   // console.log(route.params)
 
   const getData = () => {
@@ -109,6 +109,7 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
 
         console.log({ data })
         setText(data.test)
+        setData(data.tasks)
       })
       .catch((e: any) => {
         console.log({ e })
@@ -117,12 +118,26 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
 
   const navigationCreate = () => {
     // navigation.navigate('CREATE')
-    setData([...data, 'new'])
+    setData([...data, { id: data.length + 1, date: new Date(), state: 'DONE' }])
   }
 
   const navigationDetail = () => {
     navigation.navigate('DETAIL')
   }
+
+  useEffect(() => {
+    storage.load({ key: 'tasks' })
+      .then((data: any) => {
+
+        console.log({ data })
+        setText(data.test)
+        setData(data.tasks)
+      })
+      .catch((e: any) => {
+        console.log({ e })
+      })
+
+  }, [])
 
   return (
     <View>
@@ -138,14 +153,16 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
             m={2}
           >
             {/* loop */}
-            {data.map((v, i) => {
+            {data.map((v: any, i) => {
               return (
                 <Box
                   key={i}
                   w={'48%'}
                   my={1}
                 >
-                  <TaskCard handlePress={(e: any) => navigation.push('CREATE', { id: 1 })} />
+                  <TaskCard handlePress={(e: any) => {
+                    navigation.navigate('DETAIL', { id: v.id })
+                  }} />
                 </Box>
               )
             })}
