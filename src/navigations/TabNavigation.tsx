@@ -10,7 +10,6 @@ import {
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeStackNavigation from './stacks/HomeStackNavigation';
-import DetaStackNavigation from './stacks/DetaStackNavigation';
 
 
 const Tab = createBottomTabNavigator();
@@ -18,8 +17,8 @@ const Tab = createBottomTabNavigator();
 const TabNavgation = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="HomeStack" component={HomeStackNavigation} />
-      <Tab.Screen name="DetaStack" component={DetaStackNavigation} />
+      <Tab.Screen name="HOME" component={HomeStackNavigation} />
+      <Tab.Screen name="CALENDER" component={HomeStackNavigation} />
     </Tab.Navigator>
   )
 }

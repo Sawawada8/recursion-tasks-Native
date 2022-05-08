@@ -34,8 +34,8 @@ const HomeScreen = ({ navigation }: any) => {
             <EX />
             <DocumentAddIcon />
             <Button
-              title="titleeee"
-              onPress={() => navigation.navigate('Deta')}
+              title="navi stack"
+              onPress={() => navigation.navigate('stack')}
             ></Button>
             <Text>{text}</Text>
             <Card navigationEvent={() => navigation.navigate('Deta')} />

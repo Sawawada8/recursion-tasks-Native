@@ -14,3 +14,21 @@
 
 - page の状態（閲覧位置）をお気に入りとして保存でき、すぐに飛べるように
 - 作成したタスクを複製して、特定の箇所に追加できるように
+
+---
+
+- AppNavi
+  - TabNavi
+    - tabScreen
+      - StackNavi
+        - Screen
+        - Screen // 個々のページ
+    - tabScreen
+      - StackNavi
+        - Screen
+        - Screen // 個々のページ
+
+---
+
+- Home // お知らせ、本日の状況などを表示
+- Task
