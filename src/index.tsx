@@ -15,6 +15,8 @@ import {
 import AppNavigation from './navigations/AppNavigation';
 import 'react-native-gesture-handler';
 
+// calendar conf
+import './utils/CalendarConfig'
 
 const Src = () => {
   return (
