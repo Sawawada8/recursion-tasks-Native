@@ -9,10 +9,12 @@ import {
 } from 'react-native';
 
 
-const TaskScreen = ({ navigation }: any) => {
+const TaskScreen = ({ navigation, route }: any) => {
+  const { id, text } = route.params
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
+      <Text>:::{text}:::{id}:::</Text>
       <Button
         title="titleeee"
         onPress={() => navigation.navigate('Deta')}

@@ -20,7 +20,7 @@ import EX from '@/components/EX';
 import TaskCard from '@/components/TaskCard'
 import { DocumentAddIcon } from '@/components/SVGIcons';
 
-import storage from '@/storage/AppStorage'
+import storage from '../../storage/AppStorage'
 
 const ShowScreen = ({ navigation }: any) => {
   const [text, setText] = useState<string>('')
@@ -41,6 +41,7 @@ const ShowScreen = ({ navigation }: any) => {
       <ScrollView
       // style={{ backgroundColor: 'coolGray.300' }}
       >
+        <Text>detail show</Text>
       </ScrollView>
     </View >
   );

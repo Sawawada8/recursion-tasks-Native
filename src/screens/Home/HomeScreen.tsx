@@ -85,23 +85,31 @@ const HomeScreen = ({ navigation }: any) => {
     navigation.navigate('CREATE')
   }
 
+  const navigationDetail = () => {
+    navigation.navigate('DETAIL')
+  }
+
   return (
     <View>
       <ScrollView
       // style={{ backgroundColor: 'coolGray.300' }}
       >
         <Box pb={60}>
+          <TaskCard handlePress={(e: any) => console.log(e)} />
+          <Text>{text}</Text>
           <Text>Home Screen</Text>
           <EX />
           <Example />
           <DocumentAddIcon />
           <Btn title='getStorage' onPress={getData}></Btn>
           <Btn
-            title="navi stack"
+            title="navi create"
             onPress={navigationCreate}
           ></Btn>
-          <TaskCard handlePress={(e: any) => console.log(e)} />
-          <Text>{text}</Text>
+          <Btn
+            title="navi detail"
+            onPress={navigationDetail}
+          ></Btn>
         </Box>
       </ScrollView>
     </View >

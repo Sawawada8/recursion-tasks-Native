@@ -16,7 +16,7 @@ import {
   Icon,
 } from 'native-base'
 
-import storage from '@/storage/AppStorage'
+import storage from '../../storage/AppStorage'
 
 const CalenderScreen = ({ navigation }: any) => {
   const [text, setText] = useState<string>('')
@@ -37,6 +37,7 @@ const CalenderScreen = ({ navigation }: any) => {
       <ScrollView
       // style={{ backgroundColor: 'coolGray.300' }}
       >
+        <Text>detail calender</Text>
       </ScrollView>
     </View >
   );

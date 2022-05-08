@@ -11,7 +11,8 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeStackNavigation from '../stacks/HomeStackNavigation';
 import TaskScreen from '../../screens/TaskScreen';
-import HomeScreen from '../../screens/Home/HomeScreen';
+import ShowScreen from '../../screens/Detail/ShowScreen';
+import CalenderScreen from '../../screens/Detail/CalenderScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -19,8 +20,8 @@ const Tab = createBottomTabNavigator();
 const TabNavgation = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="HOME" component={HomeScreen} />
-      <Tab.Screen name="CALENDER" component={TaskScreen} initialParams={{ id: 1, text: 'aaa' }} />
+      <Tab.Screen name="SHOW" component={ShowScreen} />
+      <Tab.Screen name="CALENDER" component={CalenderScreen} initialParams={{ id: 1, text: 'aaa' }} />
     </Tab.Navigator>
   )
 }
