@@ -22,8 +22,6 @@ import {
 } from 'native-base'
 
 import EX from '../../components/EX';
-import Card from '../../components/Tasks/MainTaskCard'
-import ChildCard from '../../components/Tasks/ChildTaskCard'
 import TaskCard from '../../components/TaskCard'
 import { DocumentAddIcon } from '../../components/SVGIcons';
 
@@ -37,7 +35,7 @@ const Example = () => {
     </Button>
 
     <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-      <Modal.Content maxWidth="400px">
+      <Modal.Content maxWidth="500px">
         <Modal.CloseButton />
         <Modal.Header>Contact Us</Modal.Header>
         <Modal.Body>
@@ -93,7 +91,6 @@ const AddCard: React.FC<AddCardProps> = ({ handlePress }) => {
         </Text>
       </Flex>
     </TouchableOpacity>
-
   )
 }
 
@@ -166,7 +163,6 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
             ></Box>
           </Flex>
 
-
           <Text>{text}</Text>
           <Text>Home Screen</Text>
           <EX />
@@ -182,10 +178,9 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
             onPress={navigationDetail}
           ></Btn>
         </Box>
-      </ScrollView >
+      </ScrollView>
     </View >
   );
 };
 
 export default HomeScreen;
-

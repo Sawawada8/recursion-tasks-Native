@@ -18,7 +18,7 @@ const CreateScreen = ({ navigation, route }: any) => {
     <View>
       <ScrollView>
         <Text>fjasdk;fjsdka;</Text>
-        <Button onPress={navigationSetting}>aaa</Button>
+        <Button onPress={navigationSetting}>to setting</Button>
       </ScrollView>
     </View >
   )

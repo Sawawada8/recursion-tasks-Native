@@ -17,7 +17,7 @@ import CalenderScreen from '../../screens/Detail/CalenderScreen';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavgation = () => {
+const DetailTabNavgation = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="SHOW" component={ShowScreen} />
@@ -27,4 +27,4 @@ const TabNavgation = () => {
 }
 
 
-export default TabNavgation;
+export default DetailTabNavgation;

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
-import DetailTabNavigation from './tabs/TabNavigation';
+import DetailTabNavigation from './tabs/DetailTabNavigation';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeStackNavigator from './stacks/HomeStackNavigation'

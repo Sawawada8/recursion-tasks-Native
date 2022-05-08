@@ -7,7 +7,10 @@ import {
 } from 'native-base'
 
 
-const TaskCard = ({ handlePress }: any) => {
+interface Props {
+  handlePress: (e: any) => void;
+}
+const TaskCard: React.FC<Props> = ({ handlePress }) => {
 
   return (
     <TouchableOpacity onPress={handlePress}>
