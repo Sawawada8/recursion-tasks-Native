@@ -7,7 +7,8 @@ import {
   Button,
 } from "native-base"
 
-const CreateScreen = ({ navigation }: any) => {
+const CreateScreen = ({ navigation, route }: any) => {
+  console.log(route.params)
 
   const navigationSetting = () => {
     navigation.navigate('SETTING')

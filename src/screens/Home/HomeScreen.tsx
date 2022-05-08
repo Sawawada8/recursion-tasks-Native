@@ -70,9 +70,12 @@ const Example = () => {
 };
 
 
-const AddCard = () => {
+interface AddCardProps {
+  handlePress: () => void;
+}
+const AddCard: React.FC<AddCardProps> = ({ handlePress }) => {
   return (
-    <TouchableOpacity onPress={() => { }}>
+    <TouchableOpacity onPress={handlePress}>
       <Flex
         bg="gray.300"
         p={5}
@@ -94,8 +97,14 @@ const AddCard = () => {
   )
 }
 
-const HomeScreen = ({ navigation }: any) => {
+interface Props {
+  navigation: any;
+  route: any;
+}
+const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
   const [text, setText] = useState<string>('')
+  const [data, setData] = useState(['a', 'aa', 'test'])
+  // console.log(route.params)
 
   const getData = () => {
     storage.load({ key: 'tasks' })
@@ -110,7 +119,8 @@ const HomeScreen = ({ navigation }: any) => {
   }
 
   const navigationCreate = () => {
-    navigation.navigate('CREATE')
+    // navigation.navigate('CREATE')
+    setData([...data, 'new'])
   }
 
   const navigationDetail = () => {
@@ -120,7 +130,7 @@ const HomeScreen = ({ navigation }: any) => {
   return (
     <View>
       <ScrollView
-      // style={{ backgroundColor: 'coolGray.300' }}
+        bg={'coolGray.200'}
       >
         <Box pb={60}>
           <Flex
@@ -131,29 +141,29 @@ const HomeScreen = ({ navigation }: any) => {
             m={2}
           >
             {/* loop */}
-            <Box w={'48%'}
-              my={1}
-            >
-              <TaskCard handlePress={(e: any) => console.log(e)} />
-            </Box>
-            <Box w={'48%'}
-              my={1}
-            >
-              <TaskCard handlePress={(e: any) => console.log(e)} />
-            </Box>
-            <Box w={'48%'}
-              my={1}
-            >
-              <TaskCard handlePress={(e: any) => console.log(e)} />
-            </Box>
+            {data.map((v, i) => {
+              return (
+                <Box
+                  key={i}
+                  w={'48%'}
+                  my={1}
+                >
+                  <TaskCard handlePress={(e: any) => navigation.push('CREATE', { id: 1 })} />
+                </Box>
+              )
+            })}
             {/* end loop */}
 
             <Box
               w={'48%'}
               my={1}
             >
-              <AddCard />
+              <AddCard handlePress={navigationCreate} />
             </Box>
+            <Box
+              w={'48%'}
+              my={1}
+            ></Box>
           </Flex>
 
 
