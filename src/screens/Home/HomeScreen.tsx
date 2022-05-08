@@ -4,7 +4,7 @@ import {
   SafeAreaView,
   Button as Btn,
   View,
-  Text,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -16,6 +16,9 @@ import {
   Icon,
   Modal,
   Button,
+  Flex,
+  Center,
+  Text,
 } from 'native-base'
 
 import EX from '../../components/EX';
@@ -66,6 +69,31 @@ const Example = () => {
   </>;
 };
 
+
+const AddCard = () => {
+  return (
+    <TouchableOpacity onPress={() => { }}>
+      <Flex
+        bg="gray.300"
+        p={5}
+        shadow='9'
+        borderRadius={'md'}
+        borderColor={'blueGray.700'}
+        borderWidth={1}
+        display={'flex'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        h={150}
+      >
+        <Text fontSize={'7xl'}>
+          +
+        </Text>
+      </Flex>
+    </TouchableOpacity>
+
+  )
+}
+
 const HomeScreen = ({ navigation }: any) => {
   const [text, setText] = useState<string>('')
 
@@ -95,7 +123,40 @@ const HomeScreen = ({ navigation }: any) => {
       // style={{ backgroundColor: 'coolGray.300' }}
       >
         <Box pb={60}>
-          <TaskCard handlePress={(e: any) => console.log(e)} />
+          <Flex
+            direction={'row'}
+            justifyContent={'space-around'}
+            alignItems={'center'}
+            flexWrap={'wrap'}
+            m={2}
+          >
+            {/* loop */}
+            <Box w={'48%'}
+              my={1}
+            >
+              <TaskCard handlePress={(e: any) => console.log(e)} />
+            </Box>
+            <Box w={'48%'}
+              my={1}
+            >
+              <TaskCard handlePress={(e: any) => console.log(e)} />
+            </Box>
+            <Box w={'48%'}
+              my={1}
+            >
+              <TaskCard handlePress={(e: any) => console.log(e)} />
+            </Box>
+            {/* end loop */}
+
+            <Box
+              w={'48%'}
+              my={1}
+            >
+              <AddCard />
+            </Box>
+          </Flex>
+
+
           <Text>{text}</Text>
           <Text>Home Screen</Text>
           <EX />
@@ -111,7 +172,7 @@ const HomeScreen = ({ navigation }: any) => {
             onPress={navigationDetail}
           ></Btn>
         </Box>
-      </ScrollView>
+      </ScrollView >
     </View >
   );
 };

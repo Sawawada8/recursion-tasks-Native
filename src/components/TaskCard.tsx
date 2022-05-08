@@ -13,7 +13,7 @@ const TaskCard = ({ handlePress }: any) => {
     <TouchableOpacity onPress={handlePress}>
       <Flex
         bg="blueGray.800" // bg="white"
-        m={2} p={5}
+        p={5}
         shadow='9'
         borderRadius={'md'}
         borderColor={'blueGray.700'}
@@ -21,6 +21,7 @@ const TaskCard = ({ handlePress }: any) => {
         display={'flex'}
         alignItems={'center'}
         justifyContent={'center'}
+        h={150}
       >
         <Text
           fontSize={20}
@@ -31,13 +32,17 @@ const TaskCard = ({ handlePress }: any) => {
         >hello world</Text>
         <Box
           w={'80%'}
+          mb={1}
           borderColor={'blue.500'}
           borderWidth={3}
+          overflow={'hidden'}
         >
           <Text color={'white'}>
             example
           </Text>
           <Text color={'white'}>
+            example
+            example
             example
           </Text>
         </Box>
