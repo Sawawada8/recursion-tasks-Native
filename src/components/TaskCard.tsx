@@ -15,7 +15,7 @@ const TaskCard = ({ handlePress }: any) => {
         bg="blueGray.800" // bg="white"
         p={5}
         shadow='9'
-        borderRadius={'md'}
+        borderRadius={'xl'}
         borderColor={'blueGray.700'}
         borderWidth={1}
         display={'flex'}
