@@ -26,6 +26,7 @@ import TaskCard from '../../components/TaskCard'
 import { DocumentAddIcon } from '../../components/SVGIcons';
 
 import storage from '../../storage/AppStorage'
+import { StorageData, TaskState } from '../../types/storage/data'
 
 const Example = () => {
   const [showModal, setShowModal] = useState(false);
@@ -100,7 +101,7 @@ interface Props {
 }
 const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
   const [text, setText] = useState<string>('')
-  const [data, setData] = useState([])
+  const [data, setData] = useState<StorageData[]>([])
   // console.log(route.params)
 
   const getData = () => {
@@ -117,8 +118,20 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
   }
 
   const navigationCreate = () => {
-    // navigation.navigate('CREATE')
-    setData([...data, { id: data.length + 1, date: new Date(), state: 'DONE' }])
+    navigation.navigate('CREATE')
+    // setData([
+    //   ...data,
+    //   {
+    //     id: data.length + 1,
+    //     title: 'name',
+    //     registedAt: new Date(),
+    //     records: [
+    //       {
+    //         date: new Date(),
+    //         state: 'DONE',
+    //       }]
+    //   }
+    // ])
   }
 
   const navigationDetail = () => {
