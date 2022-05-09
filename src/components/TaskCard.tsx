@@ -8,9 +8,11 @@ import {
 
 
 interface Props {
+  title: string;
+  records: any[];
   handlePress: (e: any) => void;
 }
-const TaskCard: React.FC<Props> = ({ handlePress }) => {
+const TaskCard: React.FC<Props> = ({ title, records, handlePress }) => {
 
   return (
     <TouchableOpacity onPress={handlePress}>
@@ -32,7 +34,7 @@ const TaskCard: React.FC<Props> = ({ handlePress }) => {
           mb={3}
           color={'white'}
           textAlign={'center'}
-        >hello world</Text>
+        >{title}</Text>
         <Box
           w={'80%'}
           mb={1}
@@ -41,7 +43,7 @@ const TaskCard: React.FC<Props> = ({ handlePress }) => {
           overflow={'hidden'}
         >
           <Text color={'white'}>
-            example
+            count: {records.length}
           </Text>
           <Text color={'white'}>
             example

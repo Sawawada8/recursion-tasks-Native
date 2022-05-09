@@ -8,12 +8,33 @@ import {
   Center,
   Input
 } from "native-base"
+import storage from '../../storage/AppStorage'
+import { StorageData } from '../../types/storage/data'
+import useStore from '../../stores/store'
 
 const CreateScreen = ({ navigation, route }: any) => {
   const [input, setInput] = useState<string>('')
+  const { setTasks } = useStore()
 
-  const navigationSetting = () => {
-    navigation.navigate('SETTING')
+  const navigationSetting = async () => {
+    const { tasks } = await storage.load({ key: 'tasks' })
+    const newTask: StorageData = {
+      id: tasks.length + 1,
+      title: input,
+      registedAt: new Date(),
+      records: [],
+    }
+
+    await storage.save({
+      key: 'tasks',
+      data: {
+        tasks: [...tasks, newTask]
+      }
+    })
+    setTasks([...tasks, newTask])
+
+    // navigation.navigate('SETTING')
+    navigation.navigate('HOME')
   }
 
   const handleChangeText = (inputText: string) => {

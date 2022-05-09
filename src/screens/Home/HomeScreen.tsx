@@ -27,6 +27,7 @@ import { DocumentAddIcon } from '../../components/SVGIcons';
 
 import storage from '../../storage/AppStorage'
 import { StorageData, TaskState } from '../../types/storage/data'
+import useStore from '../../stores/store';
 
 const Example = () => {
   const [showModal, setShowModal] = useState(false);
@@ -100,22 +101,8 @@ interface Props {
   route: any;
 }
 const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
-  const [text, setText] = useState<string>('')
-  const [data, setData] = useState<StorageData[]>([])
+  const { tasks, setTasks } = useStore()
   // console.log(route.params)
-
-  const getData = () => {
-    storage.load({ key: 'tasks' })
-      .then((data: any) => {
-
-        console.log({ data })
-        setText(data.test)
-        setData(data.tasks)
-      })
-      .catch((e: any) => {
-        console.log({ e })
-      })
-  }
 
   const navigationCreate = () => {
     navigation.navigate('CREATE')
@@ -137,19 +124,17 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
   const navigationDetail = () => {
     navigation.navigate('DETAIL')
   }
+  // console.log({ tasks })
 
   useEffect(() => {
     storage.load({ key: 'tasks' })
       .then((data: any) => {
-
         console.log({ data })
-        setText(data.test)
-        setData(data.tasks)
+        setTasks(data.tasks.data)
       })
       .catch((e: any) => {
         console.log({ e })
       })
-
   }, [])
 
   return (
@@ -166,16 +151,20 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
             m={2}
           >
             {/* loop */}
-            {data.map((v: any, i) => {
+            {tasks.data.map((v: StorageData, i) => {
               return (
                 <Box
                   key={i}
                   w={'48%'}
                   my={1}
                 >
-                  <TaskCard handlePress={(e: any) => {
-                    navigation.navigate('DETAIL', { id: v.id })
-                  }} />
+                  <TaskCard
+                    title={v.title}
+                    records={v.records}
+                    handlePress={(e: any) => {
+                      navigation.navigate('DETAIL', { id: v.id })
+                    }}
+                  />
                 </Box>
               )
             })}
@@ -193,12 +182,10 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
             ></Box>
           </Flex>
 
-          <Text>{text}</Text>
           <Text>Home Screen</Text>
           <EX />
           <Example />
           <DocumentAddIcon />
-          <Btn title='getStorage' onPress={getData}></Btn>
           <Btn
             title="navi create"
             onPress={navigationCreate}
