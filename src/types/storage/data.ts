@@ -6,14 +6,22 @@ enum TaskState {
 
 interface TaskRecord {
   date: Date;
-  state: TaskState;
+  state: 'DONE' | 'SKIP' | 'REST';
   comment?: string;
 }
 
 interface StorageData {
   id: number;
   title: string;
-  meta: TaskRecord[];
+  registedAt: Date;
+  records: TaskRecord[];
 }
 
-export type {TaskState, TaskRecord, StorageData};
+interface AppStorage {
+  key: string;
+  data: {
+    tasks: StorageData[];
+  };
+}
+
+export type {TaskState, TaskRecord, StorageData, AppStorage};
