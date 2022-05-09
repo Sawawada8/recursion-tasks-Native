@@ -1,5 +1,6 @@
 import Storage from 'react-native-storage';
 import AsyncStorage from '@react-native-community/async-storage';
+import {AppStorage} from '../types/storage/data';
 
 //ストレージの作成
 const storage: Storage = new Storage({
@@ -14,13 +15,19 @@ const storage: Storage = new Storage({
 });
 
 // initial data
-storage.save({
+const initialData: AppStorage = {
   key: 'tasks',
   data: {
-    name: 'study',
-    meta: [{date: new Date(), state: 'DONE', comment: 'ok'}],
-    tasks: [{id: 1, date: new Date(), state: 'DONE', comment: 'ok'}],
+    tasks: [
+      {
+        id: 1,
+        title: 'initial task',
+        registedAt: new Date(),
+        records: [],
+      },
+    ],
   },
-});
+};
+storage.save(initialData);
 
 export default storage;
