@@ -2,11 +2,11 @@ import {StorageData} from '../types/storage/data';
 import create from 'zustand';
 
 interface Store {
-  tasks: StorageData[];
+  tasks: {data: StorageData[]};
   setTasks: (tasks: StorageData[]) => any;
 }
 
-const useStore = create((set: any, get: any): any => {
+const useStore = create((set: any, get: any): Store => {
   return {
     tasks: {data: []},
     setTasks: (newTasks: StorageData[]): any => {

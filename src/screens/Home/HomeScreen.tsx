@@ -102,23 +102,16 @@ interface Props {
 }
 const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
   const { tasks, setTasks } = useStore()
-  // console.log(route.params)
 
   const navigationCreate = () => {
-    navigation.navigate('CREATE')
-    // setData([
-    //   ...data,
-    //   {
-    //     id: data.length + 1,
-    //     title: 'name',
-    //     registedAt: new Date(),
-    //     records: [
-    //       {
-    //         date: new Date(),
-    //         state: 'DONE',
-    //       }]
+    // await storage.save({
+    //   key: 'tasks',
+    //   data: {
+    //     tasks: tasks
     //   }
-    // ])
+    // })
+
+    navigation.navigate('CREATE')
   }
 
   const navigationDetail = () => {
@@ -129,11 +122,11 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
   useEffect(() => {
     storage.load({ key: 'tasks' })
       .then((data: any) => {
-        console.log({ data })
+        console.log({ data, tasks })
         setTasks(data.tasks.data)
       })
       .catch((e: any) => {
-        console.log({ e })
+        console.log({ e }, 'home useEffect error')
       })
   }, [])
 
