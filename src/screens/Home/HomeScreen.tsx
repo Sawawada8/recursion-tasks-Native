@@ -123,7 +123,7 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
     storage.load({ key: 'tasks' })
       .then((data: any) => {
         console.log({ data, tasks })
-        setTasks(data.tasks.data)
+        setTasks(data.tasks.array)
       })
       .catch((e: any) => {
         console.log({ e }, 'home useEffect error')
@@ -144,7 +144,7 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
             m={2}
           >
             {/* loop */}
-            {tasks.data.map((v: StorageData, i) => {
+            {tasks.array.map((v: StorageData, i) => {
               return (
                 <Box
                   key={i}
