@@ -123,7 +123,7 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
     storage.load({ key: 'tasks' })
       .then((data: any) => {
         console.log({ data, tasks })
-        setTasks(data.tasks.array)
+        setTasks(data.tasks)
       })
       .catch((e: any) => {
         console.log({ e }, 'home useEffect error')

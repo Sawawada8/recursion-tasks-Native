@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   // SafeAreaView,
   SafeAreaView,
-  Button,
   View,
   Text,
 } from 'react-native';
@@ -14,48 +13,67 @@ import {
   Box,
   Fab,
   Icon,
+  Button,
 } from 'native-base'
 
-import EX from '@/components/EX';
-import TaskCard from '@/components/TaskCard'
-import { DocumentAddIcon } from '@/components/SVGIcons';
+// import EX from '@/components/EX';
+// import TaskCard from '@/components/TaskCard'
+// import { DocumentAddIcon } from '@/components/SVGIcons';
 
 import storage from '../../storage/AppStorage'
+import useStore from '../../stores/store'
+import { TaskRecord } from '../../types/storage/data';
 
 const ShowScreen = ({ navigation, route }: any) => {
   const [text, setText] = useState<string>('')
   const [data, setData] = useState<null | []>(null)
+  const { tasks, setTasks } = useStore()
   const { id } = route.params
-  console.log({ dataildId: id })
+  const dataIndex = id - 1
+  const task = tasks.array[dataIndex]
 
-  const getData = () => {
-    storage.load({ key: 'tasks' })
-      .then((data: any) => {
-        console.log({ data })
-        setText(data.test)
-      })
-      .catch((e: any) => {
-        console.log({ e })
-      })
+
+  // const getData = () => {
+  //   storage.load({ key: 'tasks' })
+  //     .then((data: any) => {
+  //       console.log({ data })
+  //       setText(data.test)
+  //     })
+  //     .catch((e: any) => {
+  //       console.log({ e })
+  //     })
+  // }
+
+  const saveTaskRecord = async () => {
+    const newData = {
+      key: 'tasks',
+      data: {
+        tasks: [
+
+        ]
+      }
+    }
+    await storage.save(newData)
   }
 
   // console.log({ data }, data?.meta!.length)
+  const addTask = () => {
+    tasks.array[dataIndex] = task
+    setTasks([...tasks.array])
+  }
 
   useEffect(() => {
-    storage.load({
-      key: 'tasks'
-    }).then((data: any) => {
-      const dataIndex = data.tasks.findIndex((ele: any) => {
-        return ele.id == id;
-      })
-
-      setData(data.tasks[dataIndex])
-    }).catch((e: any) => {
-      console.log({ error: e })
-    })
+    // setData(tasks.array[id - 1])
+    // storage.load({
+    //   key: 'tasks'
+    // }).then((data: any) => {
+    //   const dataIndex = id - 1
+    //   setData(data.tasks[dataIndex])
+    // }).catch((e: any) => {
+    //   console.log({ error: e })
+    // })
   }, [])
 
-  console.log({ data })
 
   return (
     <View>
@@ -63,11 +81,18 @@ const ShowScreen = ({ navigation, route }: any) => {
       // style={{ backgroundColor: 'coolGray.300' }}
       >
         <Text>detail show::id:{id}</Text>
-        {/* {data?.meta?.map((v, i) => {
-          return (
-            <Text key={i}>{v.date}</Text>
-          )
-        })} */}
+        <Text>title:::{task.title}</Text>
+        <Text>registedAt:::{task.registedAt}</Text>
+        <View>
+
+          {task.records.map((record: TaskRecord, i: number) => {
+            return (
+              <Text key={i}>data: {record.date}::state: {record.state}::comment: {record.comment}</Text>
+            )
+          })}
+        </View>
+        <Button onPress={addTask}>add record</Button>
+
       </ScrollView>
     </View >
   );

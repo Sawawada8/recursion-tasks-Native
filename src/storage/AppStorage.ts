@@ -28,9 +28,9 @@ const initialData: AppStorage = {
     ],
   },
 };
-const save = async () => {
-  await storage.save(initialData);
-};
-save();
-// storage.save(initialData);
+// const save = async () => {
+//   await storage.save(initialData);
+// };
+// save();
+storage.save(initialData);
 export default storage;

@@ -12,7 +12,7 @@ const useStore = create((set: any, get: any): Store => {
     setTasks: (newTasks: StorageData[]): any => {
       return set(() => {
         return {
-          tasks: {data: [...newTasks]},
+          tasks: {array: [...newTasks]},
         };
       });
     },
