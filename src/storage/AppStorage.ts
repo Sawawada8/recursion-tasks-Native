@@ -28,9 +28,12 @@ const initialData: AppStorage = {
     ],
   },
 };
+
+export const storageKey = 'TASK';
+
 // const save = async () => {
 //   await storage.save(initialData);
 // };
 // save();
-storage.save(initialData);
+// storage.save(initialData);
 export default storage;

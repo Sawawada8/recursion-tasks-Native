@@ -8,16 +8,17 @@ import {
   Center,
   Input
 } from "native-base"
-import storage from '../../storage/AppStorage'
+import storage, { storageKey } from '../../storage/AppStorage'
 import { StorageData } from '../../types/storage/data'
 import useStore from '../../stores/store'
+import { useTasks } from '../../hooks/useTasks'
 
 const CreateScreen = ({ navigation, route }: any) => {
   const [input, setInput] = useState<string>('')
-  const { setTasks } = useStore()
+  const { tasks, setTasks } = useTasks(navigation)
 
   const navigationSetting = async () => {
-    const { tasks } = await storage.load({ key: 'tasks' })
+    // const { tasks } = await storage.load({ key: 'tasks' })
     const newTask: StorageData = {
       id: tasks.length + 1,
       title: input,
@@ -26,7 +27,7 @@ const CreateScreen = ({ navigation, route }: any) => {
     }
 
     await storage.save({
-      key: 'tasks',
+      key: storageKey,
       data: {
         tasks: [...tasks, newTask]
       }

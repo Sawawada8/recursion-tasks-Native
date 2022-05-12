@@ -26,8 +26,9 @@ import TaskCard from '../../components/TaskCard'
 import { DocumentAddIcon } from '../../components/SVGIcons';
 
 import storage from '../../storage/AppStorage'
-import { StorageData, TaskState } from '../../types/storage/data'
+import { AppStorageData, StorageData, TaskState } from '../../types/storage/data'
 import useStore from '../../stores/store';
+import { useTasks } from '../../hooks/useTasks'
 
 const Example = () => {
   const [showModal, setShowModal] = useState(false);
@@ -101,7 +102,7 @@ interface Props {
   route: any;
 }
 const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
-  const { tasks, setTasks } = useStore()
+  const { tasks, setTasks } = useTasks(navigation)
 
   const navigationCreate = () => {
     // await storage.save({
@@ -117,18 +118,7 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
   const navigationDetail = () => {
     navigation.navigate('DETAIL')
   }
-  // console.log({ tasks })
-
-  useEffect(() => {
-    storage.load({ key: 'tasks' })
-      .then((data: any) => {
-        console.log({ data, tasks })
-        setTasks(data.tasks)
-      })
-      .catch((e: any) => {
-        console.log({ e }, 'home useEffect error')
-      })
-  }, [])
+  console.log({ tasks })
 
   return (
     <View>
@@ -144,7 +134,7 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
             m={2}
           >
             {/* loop */}
-            {tasks.array.map((v: StorageData, i) => {
+            {tasks.map((v: StorageData, i) => {
               return (
                 <Box
                   key={i}

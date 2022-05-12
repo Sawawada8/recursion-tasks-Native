@@ -17,11 +17,12 @@ interface StorageData {
   records: TaskRecord[];
 }
 
+interface AppStorageData {
+  tasks: StorageData[];
+}
 interface AppStorage {
   key: string;
-  data: {
-    tasks: StorageData[];
-  };
+  data: AppStorageData;
 }
 
-export type {TaskState, TaskRecord, StorageData, AppStorage};
+export type {TaskState, TaskRecord, StorageData, AppStorageData, AppStorage};
