@@ -21,7 +21,18 @@ import 'react-native-get-random-values'
 // calendar conf
 import './utils/CalendarConfig'
 
+import TestScreen from './screens/TestScreen';
+
+const test = false;
+
 const Src = () => {
+  if (test) {
+    return (
+      <NativeBaseProvider>
+        <TestScreen />
+      </NativeBaseProvider>
+    )
+  }
   return (
     <NativeBaseProvider>
       <AppNavigation />
