@@ -11,7 +11,7 @@ interface TaskRecord {
 }
 
 interface StorageData {
-  id: number;
+  id: string;
   title: string;
   registedAt: Date;
   records: TaskRecord[];
