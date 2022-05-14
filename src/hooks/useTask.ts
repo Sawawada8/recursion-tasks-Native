@@ -3,29 +3,24 @@ import {useState, useEffect} from 'react';
 import {AppStorageData, StorageData} from '../types/storage/data';
 import storage, {storageKey} from '../storage/AppStorage';
 
-export const useTasks = (navigation: any) => {
-  const [tasks, setTasks] = useState<StorageData[]>([]);
+export const useTask = (
+  id: string,
+  navigation: any,
+): {
+  task: StorageData | undefined;
+  setTask: (e: any) => void;
+} => {
+  const [task, setTask] = useState<StorageData>();
 
   const fetchData = () => {
     storage
-      .getAllDataForKey(storageKey)
-      .then(dataArray => {
-        setTasks(dataArray);
+      .load({key: storageKey, id: id})
+      .then(data => {
+        setTask(data);
       })
       .catch(e => {
         if (e.name === 'NotFoundError') {
-          // storage.save({
-          //   key: storageKey,
-          //   data: {
-          //     tasks: [],
-          //   },
-          // });
         } else if (e.name === 'ExpiredError') {
-          // console.log({
-          //   customfookeerr: e,
-          //   errorType: Object.keys(e),
-          //   name: e.name,
-          // });
         }
       });
   };
@@ -40,7 +35,7 @@ export const useTasks = (navigation: any) => {
   }, []);
 
   return {
-    tasks,
-    setTasks,
+    task,
+    setTask,
   };
 };

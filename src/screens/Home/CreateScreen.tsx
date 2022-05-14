@@ -12,6 +12,7 @@ import storage, { storageKey } from '../../storage/AppStorage'
 import { StorageData } from '../../types/storage/data'
 import useStore from '../../stores/store'
 import { useTasks } from '../../hooks/useTasks'
+import { v4 as uuidv4 } from 'uuid'
 
 const CreateScreen = ({ navigation, route }: any) => {
   const [input, setInput] = useState<string>('')
@@ -19,8 +20,9 @@ const CreateScreen = ({ navigation, route }: any) => {
 
   const navigationSetting = async () => {
     // const { tasks } = await storage.load({ key: 'tasks' })
+    const uuid = uuidv4()
     const newTask: StorageData = {
-      id: tasks.length + 1,
+      id: uuid,
       title: input,
       registedAt: new Date(),
       records: [],
@@ -28,11 +30,10 @@ const CreateScreen = ({ navigation, route }: any) => {
 
     await storage.save({
       key: storageKey,
-      data: {
-        tasks: [...tasks, newTask]
-      }
+      id: uuid,
+      data: newTask,
     })
-    setTasks([...tasks, newTask])
+    // setTasks([...tasks, newTask])
 
     // navigation.navigate('SETTING')
     navigation.navigate('HOME')

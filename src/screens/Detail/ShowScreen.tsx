@@ -20,17 +20,17 @@ import {
 // import TaskCard from '@/components/TaskCard'
 // import { DocumentAddIcon } from '@/components/SVGIcons';
 
-import storage from '../../storage/AppStorage'
+import storage, { storageKey } from '../../storage/AppStorage'
 import useStore from '../../stores/store'
-import { TaskRecord } from '../../types/storage/data';
+import { StorageData, TaskRecord } from '../../types/storage/data';
+import { useTask } from '../../hooks/useTask';
 
 const ShowScreen = ({ navigation, route }: any) => {
   const [text, setText] = useState<string>('')
   const [data, setData] = useState<null | []>(null)
-  const { tasks, setTasks } = useStore()
+
   const { id } = route.params
-  const dataIndex = id - 1
-  const task = tasks.array[dataIndex]
+  const { task, setTask } = useTask(id, navigation)
 
 
   // const getData = () => {
@@ -45,35 +45,21 @@ const ShowScreen = ({ navigation, route }: any) => {
   // }
 
   const saveTaskRecord = async () => {
-    const newData = {
-      key: 'tasks',
-      data: {
-        tasks: [
+    // const newData = {
+    //   key: 'tasks',
+    //   data: {
+    //     tasks: [
 
-        ]
-      }
-    }
-    await storage.save(newData)
+    //     ]
+    //   }
+    // }
+    // await storage.save(newData)
   }
 
-  // console.log({ data }, data?.meta!.length)
-  const addTask = () => {
-    tasks.array[dataIndex] = task
-    setTasks([...tasks.array])
+
+  if (task === undefined) {
+    return <Text>no data</Text>
   }
-
-  useEffect(() => {
-    // setData(tasks.array[id - 1])
-    // storage.load({
-    //   key: 'tasks'
-    // }).then((data: any) => {
-    //   const dataIndex = id - 1
-    //   setData(data.tasks[dataIndex])
-    // }).catch((e: any) => {
-    //   console.log({ error: e })
-    // })
-  }, [])
-
 
   return (
     <View>
@@ -91,7 +77,7 @@ const ShowScreen = ({ navigation, route }: any) => {
             )
           })}
         </View>
-        <Button onPress={addTask}>add record</Button>
+        {/* <Button onPress={addTask}>add record</Button> */}
 
       </ScrollView>
     </View >
