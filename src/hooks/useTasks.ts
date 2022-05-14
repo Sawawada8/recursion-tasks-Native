@@ -12,20 +12,13 @@ export const useTasks = (navigation: any) => {
       .then(dataArray => {
         setTasks(dataArray);
       })
-      .catch(e => {
-        if (e.name === 'NotFoundError') {
-          // storage.save({
-          //   key: storageKey,
-          //   data: {
-          //     tasks: [],
-          //   },
-          // });
-        } else if (e.name === 'ExpiredError') {
-          // console.log({
-          //   customfookeerr: e,
-          //   errorType: Object.keys(e),
-          //   name: e.name,
-          // });
+      .catch(err => {
+        switch (err.name) {
+          case 'NotFoundError':
+            // error
+            break;
+          case 'ExpiredError':
+            break;
         }
       });
   };

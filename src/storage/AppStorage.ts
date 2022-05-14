@@ -14,21 +14,6 @@ const storage: Storage = new Storage({
   enableCache: true,
 });
 
-// initial data
-const initialData: AppStorage = {
-  key: 'tasks',
-  data: {
-    tasks: [
-      {
-        id: 1,
-        title: 'initial task',
-        registedAt: new Date(),
-        records: [],
-      },
-    ],
-  },
-};
-
 export const storageKey = 'TASK001';
 
 /*

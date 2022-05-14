@@ -26,11 +26,12 @@ import { StorageData, TaskRecord } from '../../types/storage/data';
 import { useTask } from '../../hooks/useTask';
 
 const ShowScreen = ({ navigation, route }: any) => {
+  const { id } = route.params
+  const { task, setTask } = useTask(id, navigation)
+
   const [text, setText] = useState<string>('')
   const [data, setData] = useState<null | []>(null)
 
-  const { id } = route.params
-  const { task, setTask } = useTask(id, navigation)
 
 
   // const getData = () => {

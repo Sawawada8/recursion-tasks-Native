@@ -1,16 +1,7 @@
 import React from 'react';
 
-import {
-  // SafeAreaView,
-  SafeAreaView,
-  ScrollView,
-  Button,
-  View,
-} from 'react-native';
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeStackNavigation from '../stacks/HomeStackNavigation';
-import TaskScreen from '../../screens/TaskScreen';
 import ShowScreen from '../../screens/Detail/ShowScreen';
 import CalenderScreen from '../../screens/Detail/CalenderScreen';
 

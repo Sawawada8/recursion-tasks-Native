@@ -15,12 +15,16 @@ export const useTask = (
   const fetchData = () => {
     storage
       .load({key: storageKey, id: id})
-      .then(data => {
+      .then((data: StorageData) => {
         setTask(data);
       })
-      .catch(e => {
-        if (e.name === 'NotFoundError') {
-        } else if (e.name === 'ExpiredError') {
+      .catch(err => {
+        switch (err.name) {
+          case 'NotFoundError':
+            // error
+            break;
+          case 'ExpiredError':
+            break;
         }
       });
   };

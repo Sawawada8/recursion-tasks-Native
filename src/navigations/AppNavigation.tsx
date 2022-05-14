@@ -1,13 +1,5 @@
 import React from 'react';
 
-import {
-  // SafeAreaView,
-  SafeAreaView,
-  ScrollView,
-  Button,
-  View,
-} from 'react-native';
-
 import { NavigationContainer } from '@react-navigation/native';
 import DetailTabNavigation from './tabs/DetailTabNavigation';
 
