@@ -30,6 +30,7 @@ import { AppStorageData, StorageData, TaskState } from '../../types/storage/data
 import useStore from '../../stores/store';
 import { useTasks } from '../../hooks/useTasks'
 
+
 const Example = () => {
   const [showModal, setShowModal] = useState(false);
   return <>
@@ -127,7 +128,7 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
       >
         <Box pb={60}>
           <Flex
-            direction={'row'}
+            flexDirection={'row'}
             justifyContent={'space-around'}
             alignItems={'center'}
             flexWrap={'wrap'}
@@ -141,6 +142,7 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
                   w={'48%'}
                   my={1}
                 >
+                  <Text>{v.id}</Text>
                   <TaskCard
                     title={v.title}
                     records={v.records}

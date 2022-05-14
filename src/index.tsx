@@ -15,6 +15,9 @@ import {
 import AppNavigation from './navigations/AppNavigation';
 import 'react-native-gesture-handler';
 
+// uuid
+import 'react-native-get-random-values'
+
 // calendar conf
 import './utils/CalendarConfig'
 

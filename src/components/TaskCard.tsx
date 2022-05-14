@@ -5,11 +5,12 @@ import {
   Flex,
   Text,
 } from 'native-base'
+import { TaskRecord } from '../types/storage/data'
 
 
 interface Props {
   title: string;
-  records: any[];
+  records: TaskRecord[];
   handlePress: (e: any) => void;
 }
 const TaskCard: React.FC<Props> = ({ title, records, handlePress }) => {
