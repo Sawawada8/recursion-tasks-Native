@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
   // SafeAreaView,
@@ -14,6 +6,7 @@ import {
   Button,
   View,
 } from 'react-native';
+
 import {
   Link,
   Text,
@@ -26,31 +19,12 @@ import {
   VStack,
   Code,
 } from 'native-base';
-import NativeBaseIcon from './src/components/NativeBaseIcon';
-
-import {NavigationContainer} from '@react-navigation/native';
-
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-import EX from './src/components/EX'
-
-function HomeScreen({navigation}) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Home Screen</Text>
-      <EX />
-      <Button
-        title="titleeee"
-        onPress={() => navigation.navigate('Deta')}></Button>
-    </View>
-  );
-}
-
-const Stack = createNativeStackNavigator();
 
 import {Icon} from 'native-base';
 
 import {G, Path} from 'react-native-svg';
+
+import NativeBaseIcon from '../components/NativeBaseIcon';
 
 // Color Switch Component
 function ToggleDarkMode() {
@@ -70,7 +44,7 @@ function ToggleDarkMode() {
   );
 }
 
-const Deta = () => {
+const DetaScreen = ({navigation}: any) => {
   return (
     <SafeAreaView>
       <ScrollView>
@@ -78,7 +52,8 @@ const Deta = () => {
           _dark={{bg: 'blueGray.900'}}
           _light={{bg: 'blueGray.50'}}
           px={4}
-          flex={1}>
+          flex={1}
+        >
           <VStack space={5} alignItems="center">
             <NativeBaseIcon />
             <Heading size="lg">Welcome to NativeBase</Heading>
@@ -103,7 +78,8 @@ const Deta = () => {
               <G
                 id="Group_403"
                 data-name="Group 403"
-                transform="translate(14575 1918.542)">
+                transform="translate(14575 1918.542)"
+              >
                 <Path
                   id="Path_252"
                   data-name="Path 252"
@@ -125,16 +101,5 @@ const Deta = () => {
     </SafeAreaView>
   );
 };
-const App = () => {
-  return (
-    <NativeBaseProvider>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Deta" component={Deta} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </NativeBaseProvider>
-  );
-};
-export default App;
+
+export default DetaScreen;
