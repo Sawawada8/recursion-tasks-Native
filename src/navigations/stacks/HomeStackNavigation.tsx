@@ -10,9 +10,19 @@ const Stack = createNativeStackNavigator();
 const HomeStackNavigation = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="HOME" component={HomeScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="CREATE" component={CreateScreen} />
-      <Stack.Screen name="SETTING" component={SettingScreen} />
+      <Stack.Screen
+        name="HOME"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CREATE"
+        component={CreateScreen}
+      />
+      <Stack.Screen
+        name="SETTING"
+        component={SettingScreen}
+      />
     </Stack.Navigator>
   );
 };
