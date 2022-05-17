@@ -25,7 +25,13 @@ const CreateScreen = ({ navigation, route }: any) => {
       id: uuid,
       title: input,
       registedAt: new Date(),
-      records: [],
+      records: [
+        {
+          date: new Date(),
+          state: 'DONE',
+          comment: '頑張りました。'
+        }
+      ],
     }
 
     await storage.save({

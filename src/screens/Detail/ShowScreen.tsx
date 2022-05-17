@@ -57,6 +57,9 @@ const ShowScreen = ({ navigation, route }: any) => {
     // await storage.save(newData)
   }
 
+  const update = () => {
+    setTask({ ...task, title: 'updated title' })
+  }
 
   if (task === undefined) {
     return <Text>no data</Text>
@@ -71,14 +74,15 @@ const ShowScreen = ({ navigation, route }: any) => {
         <Text>title:::{task.title}</Text>
         <Text>registedAt:::{task.registedAt}</Text>
         <View>
-
           {task.records.map((record: TaskRecord, i: number) => {
             return (
-              <Text key={i}>data: {record.date}::state: {record.state}::comment: {record.comment}</Text>
+              <Text key={i}>
+                data: {record.date}::state: {record.state}::comment: {record.comment}
+              </Text>
             )
           })}
         </View>
-        {/* <Button onPress={addTask}>add record</Button> */}
+        <Button onPress={update}>UPDATE</Button>
 
       </ScrollView>
     </View >
