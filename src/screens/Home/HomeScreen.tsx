@@ -30,6 +30,9 @@ import { AppStorageData, StorageData, TaskState } from '../../types/storage/data
 import useStore from '../../stores/store';
 import { useTasks } from '../../hooks/useTasks'
 
+import {
+  PlusIcon,
+} from "react-native-heroicons/solid";
 
 const Example = () => {
   const [showModal, setShowModal] = useState(false);
@@ -90,9 +93,7 @@ const AddCard: React.FC<AddCardProps> = ({ handlePress }) => {
         justifyContent={'center'}
         h={150}
       >
-        <Text fontSize={'7xl'}>
-          +
-        </Text>
+        <PlusIcon color={'black'} size={60} />
       </Flex>
     </TouchableOpacity>
   )
