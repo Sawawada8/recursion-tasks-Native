@@ -23,11 +23,9 @@ import {
 
 import EX from '../../components/EX';
 import TaskCard from '../../components/TaskCard'
-import { DocumentAddIcon } from '../../components/SVGIcons';
 
 import storage from '../../storage/AppStorage'
 import { AppStorageData, StorageData, TaskState } from '../../types/storage/data'
-import useStore from '../../stores/store';
 import { useTasks } from '../../hooks/useTasks'
 
 import {
@@ -171,15 +169,6 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
           <Text>Home Screen</Text>
           <EX />
           <Example />
-          <DocumentAddIcon />
-          <Btn
-            title="navi create"
-            onPress={navigationCreate}
-          ></Btn>
-          <Btn
-            title="navi detail"
-            onPress={navigationDetail}
-          ></Btn>
         </Box>
       </ScrollView>
     </View >

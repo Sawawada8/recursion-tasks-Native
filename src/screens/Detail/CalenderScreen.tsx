@@ -99,7 +99,7 @@ const CalenderScreen = ({ navigation, route }: any) => {
           // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
           disableAllTouchEventsForDisabledDays={true}
           // Replace default month and year title with custom one. the function receive a date as parameter
-          renderHeader={date => {
+          renderHeader={(date => {
             /*Return JSX*/
           }}
           // Enable the option to swipe between months. Default = false

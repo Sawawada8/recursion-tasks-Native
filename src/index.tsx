@@ -12,6 +12,7 @@ import {
   VStack,
   Code,
 } from 'native-base';
+import { SSRProvider } from '@react-aria/ssr';
 import AppNavigation from './navigations/AppNavigation';
 import 'react-native-gesture-handler';
 
@@ -28,15 +29,19 @@ const test = false;
 const Src = () => {
   if (test) {
     return (
-      <NativeBaseProvider>
-        <TestScreen />
-      </NativeBaseProvider>
+      <SSRProvider>
+        <NativeBaseProvider>
+          <TestScreen />
+        </NativeBaseProvider>
+      </SSRProvider>
     )
   }
   return (
-    <NativeBaseProvider>
-      <AppNavigation />
-    </NativeBaseProvider>
+    <SSRProvider>
+      <NativeBaseProvider>
+        <AppNavigation />
+      </NativeBaseProvider>
+    </SSRProvider>
   );
 };
 
