@@ -27,7 +27,6 @@ const CalenderScreen = ({ navigation, route }: any) => {
   const { id } = route.params
   const { task, setTask } = useTask(id, navigation)
 
-
   if (task === undefined) {
     return <Center
       h={'100%'}
@@ -40,6 +39,15 @@ const CalenderScreen = ({ navigation, route }: any) => {
     </Center>
   }
 
+  const createMarkedDates = () => {
+    const markedDates: any = {};
+    for (const record of task?.records) {
+      markedDates[record.date] = { selected: true }
+    }
+
+    return markedDates;
+  }
+
   return (
     <View>
       <ScrollView
@@ -49,7 +57,10 @@ const CalenderScreen = ({ navigation, route }: any) => {
         <Text>{task.registedAt}</Text>
         <Text>{id}</Text>
 
-        <Calendar />
+        <Calendar
+          enableSwipeMonths={true}
+          markedDates={createMarkedDates()}
+        />
         <Text>------------</Text>
 
         <Calendar
@@ -99,8 +110,9 @@ const CalenderScreen = ({ navigation, route }: any) => {
           // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
           disableAllTouchEventsForDisabledDays={true}
           // Replace default month and year title with custom one. the function receive a date as parameter
-          renderHeader={(date => {
+          renderHeader={date => {
             /*Return JSX*/
+            return <></>
           }}
           // Enable the option to swipe between months. Default = false
           enableSwipeMonths={true}
