@@ -102,7 +102,7 @@ interface Props {
   route: any;
 }
 const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
-  const { tasks, setTasks } = useTasks(navigation)
+  const { tasks } = useTasks(navigation)
 
   const navigationCreate = () => {
     // await storage.save({
@@ -166,9 +166,8 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
             ></Box>
           </Flex>
 
-          <Text>Home Screen</Text>
-          <EX />
-          <Example />
+          {/* <EX /> */}
+          {/* <Example /> */}
         </Box>
       </ScrollView>
     </View >
