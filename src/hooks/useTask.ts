@@ -38,6 +38,18 @@ export const useTask = (
     return willFocusSubscription;
   }, []);
 
+  useEffect(() => {
+    if (task === undefined) {
+      return;
+    }
+
+    storage.save({
+      key: storageKey,
+      id: id,
+      data: task,
+    });
+  }, [task]);
+
   return {
     task,
     setTask,

@@ -5,7 +5,7 @@ enum TaskState {
 }
 
 interface TaskRecord {
-  date: Date;
+  date: string;
   state: 'DONE' | 'SKIP' | 'REST';
   comment?: string;
 }
@@ -13,7 +13,7 @@ interface TaskRecord {
 interface StorageData {
   id: string;
   title: string;
-  registedAt: Date;
+  registedAt: string;
   records: TaskRecord[];
 }
 

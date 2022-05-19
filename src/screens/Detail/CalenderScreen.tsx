@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   Button,
   View,
-  Text,
 } from 'react-native';
 
 import {
@@ -14,23 +13,39 @@ import {
   Box,
   Fab,
   Icon,
+  Center,
+  Text,
+  Flex,
 } from 'native-base'
 import { Calendar } from 'react-native-calendars'
 
 import storage from '../../storage/AppStorage'
 
-const CalenderScreen = ({ navigation, route }: any) => {
-  const [text, setText] = useState<string>('')
+import { useTask } from '../../hooks/useTask'
 
-  const getData = () => {
-    storage.load({ key: 'tasks' })
-      .then((data: any) => {
-        console.log({ data })
-        setText(data.test)
-      })
-      .catch((e: any) => {
-        console.log({ e })
-      })
+const CalenderScreen = ({ navigation, route }: any) => {
+  const { id } = route.params
+  const { task, setTask } = useTask(id, navigation)
+
+  if (task === undefined) {
+    return <Center
+      h={'100%'}
+      alignItems={'center'}
+    >
+      <Text
+        fontSize={30}
+        fontWeight={'bold'}
+      >Loading ...</Text>
+    </Center>
+  }
+
+  const createMarkedDates = () => {
+    const markedDates: any = {};
+    for (const record of task?.records) {
+      markedDates[record.date] = { selected: true }
+    }
+
+    return markedDates;
   }
 
   return (
@@ -38,9 +53,14 @@ const CalenderScreen = ({ navigation, route }: any) => {
       <ScrollView
       // style={{ backgroundColor: 'coolGray.300' }}
       >
-        <Text>detail calender</Text>
+        <Text>{task.title}</Text>
+        <Text>{task.registedAt}</Text>
+        <Text>{id}</Text>
 
-        <Calendar />
+        <Calendar
+          enableSwipeMonths={true}
+          markedDates={createMarkedDates()}
+        />
         <Text>------------</Text>
 
         <Calendar
@@ -92,6 +112,7 @@ const CalenderScreen = ({ navigation, route }: any) => {
           // Replace default month and year title with custom one. the function receive a date as parameter
           renderHeader={date => {
             /*Return JSX*/
+            return <></>
           }}
           // Enable the option to swipe between months. Default = false
           enableSwipeMonths={true}

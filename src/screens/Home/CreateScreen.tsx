@@ -13,6 +13,7 @@ import { StorageData } from '../../types/storage/data'
 import useStore from '../../stores/store'
 import { useTasks } from '../../hooks/useTasks'
 import { v4 as uuidv4 } from 'uuid'
+import moment from 'moment'
 
 const CreateScreen = ({ navigation, route }: any) => {
   const [input, setInput] = useState<string>('')
@@ -21,11 +22,18 @@ const CreateScreen = ({ navigation, route }: any) => {
   const navigationSetting = async () => {
     // const { tasks } = await storage.load({ key: 'tasks' })
     const uuid = uuidv4()
+    const date = moment().format('YYYY-MM-DD')
     const newTask: StorageData = {
       id: uuid,
       title: input,
-      registedAt: new Date(),
-      records: [],
+      registedAt: date,
+      records: [
+        {
+          date: date,
+          state: 'DONE',
+          comment: '頑張りました。'
+        }
+      ],
     }
 
     await storage.save({

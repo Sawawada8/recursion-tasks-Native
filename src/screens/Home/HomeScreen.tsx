@@ -23,13 +23,14 @@ import {
 
 import EX from '../../components/EX';
 import TaskCard from '../../components/TaskCard'
-import { DocumentAddIcon } from '../../components/SVGIcons';
 
 import storage from '../../storage/AppStorage'
 import { AppStorageData, StorageData, TaskState } from '../../types/storage/data'
-import useStore from '../../stores/store';
 import { useTasks } from '../../hooks/useTasks'
 
+import {
+  PlusIcon,
+} from "react-native-heroicons/solid";
 
 const Example = () => {
   const [showModal, setShowModal] = useState(false);
@@ -90,9 +91,7 @@ const AddCard: React.FC<AddCardProps> = ({ handlePress }) => {
         justifyContent={'center'}
         h={150}
       >
-        <Text fontSize={'7xl'}>
-          +
-        </Text>
+        <PlusIcon color={'black'} size={60} />
       </Flex>
     </TouchableOpacity>
   )
@@ -103,7 +102,7 @@ interface Props {
   route: any;
 }
 const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
-  const { tasks, setTasks } = useTasks(navigation)
+  const { tasks } = useTasks(navigation)
 
   const navigationCreate = () => {
     // await storage.save({
@@ -167,18 +166,8 @@ const HomeScreen: React.FC<Props> = ({ navigation, route }) => {
             ></Box>
           </Flex>
 
-          <Text>Home Screen</Text>
-          <EX />
-          <Example />
-          <DocumentAddIcon />
-          <Btn
-            title="navi create"
-            onPress={navigationCreate}
-          ></Btn>
-          <Btn
-            title="navi detail"
-            onPress={navigationDetail}
-          ></Btn>
+          {/* <EX /> */}
+          {/* <Example /> */}
         </Box>
       </ScrollView>
     </View >
