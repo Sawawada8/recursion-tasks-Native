@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import {
   // SafeAreaView,
   SafeAreaView,
-  View,
   Text,
+  TouchableOpacity,
 } from 'react-native';
 
 import {
+
+  View,
   FormControl,
   ScrollView,
   Input,
@@ -14,16 +16,18 @@ import {
   Fab,
   Icon,
   Button,
+  Flex,
+  Circle,
 } from 'native-base'
-
-// import EX from '@/components/EX';
-// import TaskCard from '@/components/TaskCard'
-// import { DocumentAddIcon } from '@/components/SVGIcons';
 
 import storage, { storageKey } from '../../storage/AppStorage'
 import useStore from '../../stores/store'
 import { StorageData, TaskRecord } from '../../types/storage/data';
 import { useTask } from '../../hooks/useTask';
+
+import {
+  PlusIcon,
+} from "react-native-heroicons/solid";
 
 const ShowScreen = ({ navigation, route }: any) => {
   const { id } = route.params
@@ -31,19 +35,6 @@ const ShowScreen = ({ navigation, route }: any) => {
 
   const [text, setText] = useState<string>('')
   const [data, setData] = useState<null | []>(null)
-
-
-
-  // const getData = () => {
-  //   storage.load({ key: 'tasks' })
-  //     .then((data: any) => {
-  //       console.log({ data })
-  //       setText(data.test)
-  //     })
-  //     .catch((e: any) => {
-  //       console.log({ e })
-  //     })
-  // }
 
   const saveTaskRecord = async () => {
     // const newData = {
@@ -60,15 +51,20 @@ const ShowScreen = ({ navigation, route }: any) => {
   const update = () => {
     setTask({ ...task, title: 'updated title' })
   }
+  const handlePressAddResult = () => {
+    // todo
+  }
 
   if (task === undefined) {
     return <Text>no data</Text>
   }
 
   return (
-    <View>
+    <View
+      minHeight={'100%'}
+      flex={1}
+    >
       <ScrollView
-      // style={{ backgroundColor: 'coolGray.300' }}
       >
         <Text>detail show::id:{id}</Text>
         <Text>title:::{task.title}</Text>
@@ -85,6 +81,22 @@ const ShowScreen = ({ navigation, route }: any) => {
         <Button onPress={update}>UPDATE</Button>
 
       </ScrollView>
+      <Box alignItems={'center'}>
+        <TouchableOpacity
+          onPress={handlePressAddResult}
+        >
+          <Circle
+            position={'absolute'}
+            // right={'50%'}
+            bottom={60}
+            bg={'white'}
+            p={3}
+            shadow={5}
+          >
+            <PlusIcon size={40} color={'black'} />
+          </Circle>
+        </TouchableOpacity>
+      </Box>
     </View >
   );
 };
