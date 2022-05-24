@@ -43,8 +43,8 @@ const CreateScreen = ({ navigation, route }: any) => {
     })
     // setTasks([...tasks, newTask])
 
-    // navigation.navigate('SETTING')
-    navigation.navigate('HOME')
+    navigation.navigate('SETTING', { id: uuid })
+    // navigation.navigate('HOME')
   }
 
   const handleChangeText = (inputText: string) => {
